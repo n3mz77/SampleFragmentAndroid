@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 
 public class Fragment1 extends Fragment {
@@ -23,4 +26,14 @@ public class Fragment1 extends Fragment {
         return inflater.inflate(R.layout.fragment_fragment1, container, false);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        getActivity().setTitle(R.string.fragment_1);
+        ImageView imageView = (ImageView) getActivity().findViewById(R.id.img_chuck);
+        Picasso.with(getActivity())
+                .load("https://unsplash.it/200/300/?random")
+                .placeholder(R.mipmap.ic_launcher)
+                .into(imageView);
+    }
 }
